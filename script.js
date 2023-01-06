@@ -88,49 +88,75 @@ var upperCasedCharacters = [
   "Z",
 ];
 
+
 // Function to prompt user for password options
 function getPasswordOptions() {
-
+  
   let passwordLength = prompt("Choose a password length between 10 and 64");
-  if (passwordLength >= 10 && passwordLength <= 64) {
     console.log(passwordLength);
 
-    let step1 = (passwordLength - 3)
-    let lowerCasedCharacters = prompt(
-      "How many lower case characters? Between 1 and " + (step1)
-    );
-      if (lowerCasedCharacters <= 1 && lowerCasedCharacters >= step1) {
-    console.log(lowerCasedCharacters);
-    let upperCasedCharacters = prompt(
-      "How many lower upper characters? Between 1 and " +
-        (passwordLength - lowerCasedCharacters - 2)
-    );
-    console.log(upperCasedCharacters);
-    let numericCharacters = prompt(
-      "How many numeric characters? Between 1 and " +
-        (passwordLength - lowerCasedCharacters - upperCasedCharacters -1)
-    );
-    console.log(numericCharacters);
-    let specialCharacters = prompt(
-      "How many special characters? Between 1 and " +
-        (passwordLength - lowerCasedCharacters - upperCasedCharacters - numericCharacters)
-    );
-    console.log(specialCharacters);
-      }else{
-        alert("Please try again.")
-      }
-  } else {
-    alert("Please try again. ");
+   let passwordOptionsLowerCase = confirm("Would you like to use lowercase characters?");
+    console.log(passwordOptionsLowerCase);
+
+    let passwordOptionsUpperCase = confirm("Would you like to use Uppercase characters?");
+    console.log(passwordOptionsUpperCase);
+
+    let passwordOptionsNumeric = confirm("Would you like to use Numeric characters?");
+    console.log(passwordOptionsNumeric);
+
+    let passwordOptionsSpecialCharacter = confirm("Would you like to use Special Characters?");
+    console.log(passwordOptionsSpecialCharacter);
+
+    let passwordOptions = {
+    length: passwordLength,
+    lowerCase: passwordOptionsLowerCase,
+    uppercase: passwordOptionsUpperCase,
+    numeric: passwordOptionsNumeric,
+    specialCharactersOp: passwordOptionsSpecialCharacter
+  }
+  console.log(passwordOptions);
+
+    return passwordOptions;
+  
+}
+
+
+
+// Function for getting a random element from an array
+function getRandom(arr) {
+
+  let randomIndex = Math.floor(Math.random()*arrayName.length)
+
+}
+
+// Function to generate password with user input
+function generatePassword() {
+
+  let options = getPasswordOptions();
+
+  if (options.lowerCase === true) {
+    chosenCharacters = lowerCasedCharacters 
+  }
+    
+  }
+
+  const array1 = ['a', 'b', 'c'];
+  const array2 = ['d', 'e', 'f'];
+  const chosenCharacters = array1.concat(array2);
+
+  let generatePassword = "";
+  for (let i = 0; i < options.length; i++) {
+    
+   practicePassword += "j"
+
+   console.log(options);
   }
 }
 
-getPasswordOptions();
 
-// Function for getting a random element from an array
-function getRandom(arr) {}
 
-// Function to generate password with user input
-function generatePassword() {}
+  //return practicePassword;
+//}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
