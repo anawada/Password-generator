@@ -1,5 +1,5 @@
 // Array of special characters to be included in password
-var specialCharacters = [
+let specialCharacters = [
   "@",
   "%",
   "+",
@@ -26,10 +26,10 @@ var specialCharacters = [
 ];
 
 // Array of numeric characters to be included in password
-var numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+let numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 // Array of lowercase characters to be included in password
-var lowerCasedCharacters = [
+let lowerCasedCharacters = [
   "a",
   "b",
   "c",
@@ -59,7 +59,7 @@ var lowerCasedCharacters = [
 ];
 
 // Array of uppercase characters to be included in password
-var upperCasedCharacters = [
+let upperCasedCharacters = [
   "A",
   "B",
   "C",
@@ -125,18 +125,32 @@ function getPasswordOptions() {
 // Function for getting a random element from an array
 function getRandom(arr) {
 
-  let randomIndex = Math.floor(Math.random()*arrayName.length)
-
 }
 
 // Function to generate password with user input
 function generatePassword() {
 
   let options = getPasswordOptions();
+  let optionsArr = (Object.entries(options));
+  console.log(optionsArr);
 
-  if (options.lowerCase === true) {
-    chosenCharacters = lowerCasedCharacters 
-  }
+  
+
+
+  //create a function that every time that the object variable comes back true I include that array in the concatenation.
+
+  //access the object options
+  //take the values from the object that are true
+
+
+
+ 
+
+// expected output:
+// "a: 1"
+// "b: 2"
+// "c: 3"
+
     
   }
 
@@ -144,19 +158,6 @@ function generatePassword() {
   const array2 = ['d', 'e', 'f'];
   const chosenCharacters = array1.concat(array2);
 
-  let generatePassword = "";
-  for (let i = 0; i < options.length; i++) {
-    
-   practicePassword += "j"
-
-   console.log(options);
-  }
-}
-
-
-
-  //return practicePassword;
-//}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
