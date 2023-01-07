@@ -120,32 +120,43 @@ function getPasswordOptions() {
   
 }
 
-
-
 // Function for getting a random element from an array
 function getRandom(arr) {
-
 }
 
 // Function to generate password with user input
 function generatePassword() {
+  
+  let chosenCharacters = [];
 
   let options = getPasswordOptions();
-  
+
+  let passwordOptionsValues = Object.entries(options);
+  console.log(passwordOptionsValues); 
+
+  for (let i = 0; i < passwordOptionsValues.length; i++) {
+    const element = passwordOptionsValues[0][1];
+    if(element === true) {
+      console.log
+    }
+  }
 
 
-  //create a function that every time that the object variable comes back true I include that array in the concatenation.
-
-  //take the values from the object that are true
-
-  
-}
+ 
+  // if(options.lowerCase === true){
+  //   chosenCharacters = lowerCasedCharacters;
+  // }else if (options.lowerCase && options.uppercase){
+  //   chosenCharacters = lowerCasedCharacters.concat(upperCasedCharacters);
+  // }else if (options.lowerCase && options.uppercase && numericCharacters){
+  //   chosenCharacters = lowerCasedCharacters.concat(upperCasedCharacters, numericCharacters);
+  // } 
     
-  
+    }
 
-  const array1 = ['a', 'b', 'c'];
-  const array2 = ['d', 'e', 'f'];
-  const chosenCharacters = array1.concat(array2);
+ 
+
+  
+  // const chosenCharacters = array1.concat(array2);
 
 
 // Get references to the #generate element
