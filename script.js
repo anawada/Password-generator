@@ -131,28 +131,17 @@ function getRandom(arr) {
 function generatePassword() {
 
   let options = getPasswordOptions();
-  let optionsArr = (Object.entries(options));
-  console.log(optionsArr);
-
   
 
 
   //create a function that every time that the object variable comes back true I include that array in the concatenation.
 
-  //access the object options
   //take the values from the object that are true
 
-
-
- 
-
-// expected output:
-// "a: 1"
-// "b: 2"
-// "c: 3"
-
+  
+}
     
-  }
+  
 
   const array1 = ['a', 'b', 'c'];
   const array2 = ['d', 'e', 'f'];
