@@ -126,37 +126,37 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
-  
+
   let chosenCharacters = [];
-
   let options = getPasswordOptions();
-
-  let passwordOptionsValues = Object.entries(options);
-  console.log(passwordOptionsValues); 
-
-  for (let i = 0; i < passwordOptionsValues.length; i++) {
-    const element = passwordOptionsValues[0][1];
-    if(element === true) {
-      console.log
-    }
-  }
-
-
- 
-  // if(options.lowerCase === true){
-  //   chosenCharacters = lowerCasedCharacters;
-  // }else if (options.lowerCase && options.uppercase){
-  //   chosenCharacters = lowerCasedCharacters.concat(upperCasedCharacters);
-  // }else if (options.lowerCase && options.uppercase && numericCharacters){
-  //   chosenCharacters = lowerCasedCharacters.concat(upperCasedCharacters, numericCharacters);
-  // } 
-    
-    }
-
- 
-
   
-  // const chosenCharacters = array1.concat(array2);
+     
+  if (options.lowerCase === true){
+    chosenCharacters = chosenCharacters.concat(lowerCasedCharacters);
+  }else {
+    console.log("nope");
+  }
+  if (options.uppercase === true){
+    chosenCharacters = chosenCharacters.concat(upperCasedCharacters);
+  }else {
+    console.log("nope");
+  }
+  if (options.specialCharactersOp === true){
+    chosenCharacters = chosenCharacters.concat(specialCharacters);
+  }else {
+    console.log("nope");
+  }
+  if (options.numeric === true){
+    chosenCharacters = chosenCharacters.concat(numericCharacters);
+  }else {
+    console.log("nope");
+  }
+  
+  console.log(chosenCharacters);
+
+  return chosenCharacters
+}
+
 
 
 // Get references to the #generate element
