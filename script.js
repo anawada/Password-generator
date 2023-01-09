@@ -88,25 +88,28 @@ let upperCasedCharacters = [
   "Z",
 ];
 
+// variable declarated in a global scope to be used for 2  != functions
+let passwordLength = 0;
 
 // Function to prompt user for password options
 function getPasswordOptions() {
   
-  let passwordLength = prompt("Choose a password length between 10 and 64");
-    console.log(passwordLength);
+    passwordLength = prompt("Choose a password length between 10 and 64");
+    console.log("passwordLength: " + passwordLength);
 
    let passwordOptionsLowerCase = confirm("Would you like to use lowercase characters?");
-    console.log(passwordOptionsLowerCase);
+    console.log("lowercase: " + passwordOptionsLowerCase);
 
     let passwordOptionsUpperCase = confirm("Would you like to use Uppercase characters?");
-    console.log(passwordOptionsUpperCase);
+    console.log("uppercase: " + passwordOptionsUpperCase);
 
     let passwordOptionsNumeric = confirm("Would you like to use Numeric characters?");
-    console.log(passwordOptionsNumeric);
+    console.log("numeric: " + passwordOptionsNumeric);
 
     let passwordOptionsSpecialCharacter = confirm("Would you like to use Special Characters?");
-    console.log(passwordOptionsSpecialCharacter);
+    console.log("special characters: " + passwordOptionsSpecialCharacter);
 
+    //Object created with user input 
     let passwordOptions = {
     length: passwordLength,
     lowerCase: passwordOptionsLowerCase,
@@ -116,21 +119,41 @@ function getPasswordOptions() {
   }
   console.log(passwordOptions);
 
+// from this function I returned the object with the user's answers
     return passwordOptions;
   
 }
 
 // Function for getting a random element from an array
 function getRandom(arr) {
+
+  //created an variable to store the result 
+  let generatedPassword = "";
+   
+
+  for (let i = 0; i < passwordLength; i++) {
+
+    let randomCharacter = Math.floor(Math.random()*arr.length)
+    generatedPassword += arr[randomCharacter]
+    
+  }
+  console.log("generated password" + generatedPassword);
+
+  return generatedPassword
 }
+
 
 // Function to generate password with user input
 function generatePassword() {
 
   let chosenCharacters = [];
+
+  // created a variable to manipulate the object generated in getPasswordOptions()
   let options = getPasswordOptions();
   
-     
+  //if and else created acessing the object to check if the answer was true of false and concatenating the
+  //arrays in case true
+
   if (options.lowerCase === true){
     chosenCharacters = chosenCharacters.concat(lowerCasedCharacters);
   }else {
@@ -154,7 +177,9 @@ function generatePassword() {
   
   console.log(chosenCharacters);
 
-  return chosenCharacters
+  // Call getRandom(Arr) function to randomize and create a new array with the password
+  getRandom(chosenCharacters);
+  //return randomCharacters
 }
 
 
@@ -172,3 +197,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
