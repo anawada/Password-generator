@@ -124,12 +124,13 @@ function getPasswordOptions() {
   
 }
 
+//variable created globally to be used in two different functions
+let generatedPassword = "";
+
 // Function for getting a random element from an array
 function getRandom(arr) {
 
   //created an variable to store the result 
-  let generatedPassword = "";
-   
 
   for (let i = 0; i < passwordLength; i++) {
 
@@ -177,11 +178,15 @@ function generatePassword() {
   
   console.log(chosenCharacters);
 
+  if(chosenCharacters === []) {
+    getPasswordOptions();
+  }else { null; 
+  }
   // Call getRandom(Arr) function to randomize and create a new array with the password
   getRandom(chosenCharacters);
-  //return randomCharacters
-}
 
+  return generatedPassword
+}
 
 
 // Get references to the #generate element
