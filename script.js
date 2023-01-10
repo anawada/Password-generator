@@ -88,7 +88,7 @@ let upperCasedCharacters = [
   "Z",
 ];
 
-// variable declarated in a global scope to be used for 2  != functions
+// variable declarated in a global scope to be used for 2  !== functions
 let passwordLength = 0;
 
 // Function to prompt user for password options
@@ -124,17 +124,18 @@ function getPasswordOptions() {
   
 }
 
+//variable created globally to be used in two different functions
+let generatedPassword = "";
+
 // Function for getting a random element from an array
 function getRandom(arr) {
 
   //created an variable to store the result 
-  let generatedPassword = "";
-   
 
   for (let i = 0; i < passwordLength; i++) {
 
-    let randomCharacter = Math.floor(Math.random()*arr.length)
-    generatedPassword += arr[randomCharacter]
+    let randomIndex = Math.floor(Math.random()*arr.length)
+    generatedPassword += arr[randomIndex]
     
   }
   console.log("generated password" + generatedPassword);
@@ -150,38 +151,38 @@ function generatePassword() {
 
   // created a variable to manipulate the object generated in getPasswordOptions()
   let options = getPasswordOptions();
-  
-  //if and else created acessing the object to check if the answer was true of false and concatenating the
-  //arrays in case true
 
-  if (options.lowerCase === true){
-    chosenCharacters = chosenCharacters.concat(lowerCasedCharacters);
+  if(options.lowerCase === false && options.uppercase === false && options.specialCharactersOp === false && options.numeric === false){
+    alert("You need to choose at least one option! Let's try again!")
+    getPasswordOptions();
   }else {
-    console.log("nope");
-  }
-  if (options.uppercase === true){
-    chosenCharacters = chosenCharacters.concat(upperCasedCharacters);
-  }else {
-    console.log("nope");
-  }
-  if (options.specialCharactersOp === true){
-    chosenCharacters = chosenCharacters.concat(specialCharacters);
-  }else {
-    console.log("nope");
-  }
-  if (options.numeric === true){
-    chosenCharacters = chosenCharacters.concat(numericCharacters);
-  }else {
-    console.log("nope");
-  }
-  
-  console.log(chosenCharacters);
+    //conditionals created acessing the object to check if the answer was true of false and concatenating the arrays in case true
+    if (options.lowerCase === true){
+      chosenCharacters = chosenCharacters.concat(lowerCasedCharacters);
+    }else {
+      console.log("nope");
+    }
+    if (options.uppercase === true){
+      chosenCharacters = chosenCharacters.concat(upperCasedCharacters);
+    }else {
+      console.log("nope");
+    }
+    if (options.specialCharactersOp === true){
+      chosenCharacters = chosenCharacters.concat(specialCharacters);
+    }else {
+      console.log("nope");
+    }
+    if (options.numeric === true){
+      chosenCharacters = chosenCharacters.concat(numericCharacters);
+    }else {
+      console.log("nope");
+    }
+    console.log(chosenCharacters)
+    getRandom(chosenCharacters);
 
-  // Call getRandom(Arr) function to randomize and create a new array with the password
-  getRandom(chosenCharacters);
-  //return randomCharacters
+  return generatedPassword
+  }
 }
-
 
 
 // Get references to the #generate element
