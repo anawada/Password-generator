@@ -113,7 +113,7 @@ function getPasswordOptions() {
     let passwordOptions = {
     length: passwordLength,
     lowerCase: passwordOptionsLowerCase,
-    uppercase: passwordOptionsUpperCase,
+    upperCase: passwordOptionsUpperCase,
     numeric: passwordOptionsNumeric,
     specialCharactersOp: passwordOptionsSpecialCharacter
   }
@@ -125,7 +125,7 @@ function getPasswordOptions() {
 }
 
 //variable created globally to be used in two different functions
-let generatedPassword = "";
+let randomCharacters = "";
 
 // Function for getting a random element from an array
 function getRandom(arr) {
@@ -135,12 +135,12 @@ function getRandom(arr) {
   for (let i = 0; i < passwordLength; i++) {
 
     let randomIndex = Math.floor(Math.random()*arr.length)
-    generatedPassword += arr[randomIndex]
+    randomCharacters += arr[randomIndex]
     
   }
-  console.log("generated password" + generatedPassword);
+  console.log("random Characters" + randomCharacters);
 
-  return generatedPassword
+  return randomCharacters
 }
 
 
@@ -148,13 +148,15 @@ function getRandom(arr) {
 function generatePassword() {
 
   let chosenCharacters = [];
+  let generatedPassword = "";
+  console.log(generatedPassword);
 
   // created a variable to manipulate the object generated in getPasswordOptions()
   let options = getPasswordOptions();
 
-  if(options.lowerCase === false && options.uppercase === false && options.specialCharactersOp === false && options.numeric === false){
+  if(options.lowerCase === false && options.upperCase === false && options.specialCharactersOp === false && options.numeric === false){
     alert("You need to choose at least one option! Let's try again!")
-    getPasswordOptions();
+    generatePassword();
   }else {
     //conditionals created acessing the object to check if the answer was true of false and concatenating the arrays in case true
     if (options.lowerCase === true){
@@ -162,7 +164,7 @@ function generatePassword() {
     }else {
       console.log("nope");
     }
-    if (options.uppercase === true){
+    if (options.upperCase === true){
       chosenCharacters = chosenCharacters.concat(upperCasedCharacters);
     }else {
       console.log("nope");
@@ -178,12 +180,12 @@ function generatePassword() {
       console.log("nope");
     }
     console.log(chosenCharacters)
-    getRandom(chosenCharacters);
-
-  return generatedPassword
   }
-}
 
+  generatedPassword = getRandom(chosenCharacters);
+  console.log("generated" + generatedPassword)
+  return generatedPassword
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
