@@ -93,97 +93,88 @@ let passwordLength = 0;
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  
-    passwordLength = prompt("Choose a password length between 10 and 64");
-    console.log("passwordLength: " + passwordLength);
+  passwordLength = prompt("Choose a password length between 10 and 64");
 
-   let passwordOptionsLowerCase = confirm("Would you like to use lowercase characters?");
-    console.log("lowercase: " + passwordOptionsLowerCase);
+  let passwordOptionsLowerCase = confirm(
+    "Would you like to use lowercase characters?"
+  );
 
-    let passwordOptionsUpperCase = confirm("Would you like to use Uppercase characters?");
-    console.log("uppercase: " + passwordOptionsUpperCase);
+  let passwordOptionsUpperCase = confirm(
+    "Would you like to use Uppercase characters?"
+  );
 
-    let passwordOptionsNumeric = confirm("Would you like to use Numeric characters?");
-    console.log("numeric: " + passwordOptionsNumeric);
+  let passwordOptionsNumeric = confirm(
+    "Would you like to use Numeric characters?"
+  );
 
-    let passwordOptionsSpecialCharacter = confirm("Would you like to use Special Characters?");
-    console.log("special characters: " + passwordOptionsSpecialCharacter);
+  let passwordOptionsSpecialCharacter = confirm(
+    "Would you like to use Special Characters?"
+  );
 
-    //Object created with user input 
-    let passwordOptions = {
+
+  //Object created with user input
+  let passwordOptions = {
     length: passwordLength,
     lowerCase: passwordOptionsLowerCase,
-    uppercase: passwordOptionsUpperCase,
+    upperCase: passwordOptionsUpperCase,
     numeric: passwordOptionsNumeric,
-    specialCharactersOp: passwordOptionsSpecialCharacter
-  }
-  console.log(passwordOptions);
+    specialCharactersOp: passwordOptionsSpecialCharacter,
+  };
 
-// from this function I returned the object with the user's answers
-    return passwordOptions;
-  
+  // from this function I returned the object with the user's answers
+  return passwordOptions;
 }
 
 //variable created globally to be used in two different functions
-let generatedPassword = "";
+let randomCharacters = "";
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-
-  //created an variable to store the result 
+  //created an variable to store the result
 
   for (let i = 0; i < passwordLength; i++) {
-
-    let randomIndex = Math.floor(Math.random()*arr.length)
-    generatedPassword += arr[randomIndex]
-    
+    let randomIndex = Math.floor(Math.random() * arr.length);
+    randomCharacters += arr[randomIndex];
   }
-  console.log("generated password" + generatedPassword);
 
-  return generatedPassword
+  return randomCharacters;
 }
-
 
 // Function to generate password with user input
 function generatePassword() {
-
   let chosenCharacters = [];
+  let generatedPassword = "";
 
   // created a variable to manipulate the object generated in getPasswordOptions()
   let options = getPasswordOptions();
 
-  if(options.lowerCase === false && options.uppercase === false && options.specialCharactersOp === false && options.numeric === false){
-    alert("You need to choose at least one option! Let's try again!")
-    getPasswordOptions();
-  }else {
+  if (
+    options.lowerCase === false &&
+    options.upperCase === false &&
+    options.specialCharactersOp === false &&
+    options.numeric === false
+  ) {
+    alert("You need to choose at least one option... Let's try again!");
+  } else {
     //conditionals created acessing the object to check if the answer was true of false and concatenating the arrays in case true
-    if (options.lowerCase === true){
+    if (options.lowerCase) {
       chosenCharacters = chosenCharacters.concat(lowerCasedCharacters);
-    }else {
-      console.log("nope");
-    }
-    if (options.uppercase === true){
+    } 
+    if (options.upperCase) {
       chosenCharacters = chosenCharacters.concat(upperCasedCharacters);
-    }else {
-      console.log("nope");
-    }
-    if (options.specialCharactersOp === true){
+    } 
+    if (options.specialCharactersOp) {
       chosenCharacters = chosenCharacters.concat(specialCharacters);
-    }else {
-      console.log("nope");
-    }
-    if (options.numeric === true){
+    } 
+    if (options.numeric) {
       chosenCharacters = chosenCharacters.concat(numericCharacters);
-    }else {
-      console.log("nope");
-    }
-    console.log(chosenCharacters)
-    getRandom(chosenCharacters);
-
-  return generatedPassword
+    } 
+    console.log(chosenCharacters);
+    generatedPassword = getRandom(chosenCharacters);
   }
-}
 
+  return generatedPassword;
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -198,4 +189,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
