@@ -9,9 +9,7 @@ Deployed application: https://anawada.github.io/Password-generator/
 
 ## Usage 
 
-Provide instructions and examples for use. Include screenshots as needed. 
-
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+Press the button, answer the questions and you will have your password generated!!
 
 ```md
 ![alt text](assets/images/screenshot.png)
