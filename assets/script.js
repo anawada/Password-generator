@@ -93,8 +93,8 @@ let passwordLength = 0;
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  passwordLength = prompt("Choose a password length between 10 and 64");
-
+  passwordLength = prompt("Choose a password length between 10 and 64")
+  
   let passwordOptionsLowerCase = confirm(
     "Would you like to use lowercase characters?"
   );
@@ -111,7 +111,6 @@ function getPasswordOptions() {
     "Would you like to use Special Characters?"
   );
 
-
   //Object created with user input
   let passwordOptions = {
     length: passwordLength,
@@ -119,18 +118,19 @@ function getPasswordOptions() {
     upperCase: passwordOptionsUpperCase,
     numeric: passwordOptionsNumeric,
     specialCharactersOp: passwordOptionsSpecialCharacter,
+  
   };
 
   // from this function I returned the object with the user's answers
   return passwordOptions;
 }
 
-//variable created globally to be used in two different functions
-let randomCharacters = "";
-
 // Function for getting a random element from an array
 function getRandom(arr) {
-  //created an variable to store the result
+  
+  //variable created to store the result
+
+  let randomCharacters = "";
 
   for (let i = 0; i < passwordLength; i++) {
     let randomIndex = Math.floor(Math.random() * arr.length);
