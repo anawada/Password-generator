@@ -11,9 +11,9 @@ Deployed application: https://anawada.github.io/Password-generator/
 
 Press the button, answer the questions and you will have your password generated!!
 
-```md
+
 ![alt text](assets/images/screenshot.png)
-```
+
 
 ## License
 
