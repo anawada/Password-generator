@@ -88,13 +88,17 @@ let upperCasedCharacters = [
   "Z",
 ];
 
-// variable declarated in a global scope to be used for 2  !== functions
+// variable declared in a global scope to be used for 2  !== functions
 let passwordLength = 0;
 
+// variable declared in global scope
+let passwordOptions = {};
 // Function to prompt user for password options
 function getPasswordOptions() {
-  passwordLength = prompt("Choose a password length between 10 and 64")
-  
+
+  passwordLength = prompt("Choose a password length between 10 and 64");
+
+  if (passwordLength < 65 && passwordLength > 9) {
   let passwordOptionsLowerCase = confirm(
     "Would you like to use lowercase characters?"
   );
@@ -109,21 +113,26 @@ function getPasswordOptions() {
 
   let passwordOptionsSpecialCharacter = confirm(
     "Would you like to use Special Characters?"
-  );
+  ); 
 
-  //Object created with user input
-  let passwordOptions = {
+    //Object created with user input
+    passwordOptions = {
     length: passwordLength,
     lowerCase: passwordOptionsLowerCase,
     upperCase: passwordOptionsUpperCase,
     numeric: passwordOptionsNumeric,
     specialCharactersOp: passwordOptionsSpecialCharacter,
-  
-  };
+    }
 
-  // from this function I returned the object with the user's answers
+  }else {
+    alert("Please, choose a password length between 10 and 64.");
+    getPasswordOptions();
+  }
   return passwordOptions;
 }
+  // from this function I returned the object with the user's answers
+
+
 
 // Function for getting a random element from an array
 function getRandom(arr) {
@@ -156,7 +165,7 @@ function generatePassword() {
   ) {
     alert("You need to choose at least one option... Let's try again!");
   } else {
-    //conditionals created acessing the object to check if the answer was true of false and concatenating the arrays in case true
+    //conditionals created accessing the object to check if the answer was true of false and concatenating the arrays in case true
     if (options.lowerCase) {
       chosenCharacters = chosenCharacters.concat(lowerCasedCharacters);
     } 
