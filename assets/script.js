@@ -1,5 +1,5 @@
 // Array of special characters to be included in password
-let specialCharacters = [
+const specialCharacters = [
   "@",
   "%",
   "+",
@@ -26,10 +26,10 @@ let specialCharacters = [
 ];
 
 // Array of numeric characters to be included in password
-let numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 // Array of lowercase characters to be included in password
-let lowerCasedCharacters = [
+const lowerCasedCharacters = [
   "a",
   "b",
   "c",
@@ -59,7 +59,7 @@ let lowerCasedCharacters = [
 ];
 
 // Array of uppercase characters to be included in password
-let upperCasedCharacters = [
+const upperCasedCharacters = [
   "A",
   "B",
   "C",
@@ -186,12 +186,12 @@ function generatePassword() {
 }
 
 // Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+let generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  let password = generatePassword();
+  let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 }
